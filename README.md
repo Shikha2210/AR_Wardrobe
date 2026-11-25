@@ -1,11 +1,13 @@
----
-title: AR Wardrobe
-colorFrom: indigo
-colorTo: pink
-sdk: docker
-app_port: 7860
-pinned: false
----
+# AR Wardrobe — T-shirt virtual try-on
+
+**Live demo (free, runs entirely in your browser):** https://shikha2210.github.io/AR_Wardrobe/
+
+The deployed site is static: pose tracking (MediaPipe Pose Landmarker, WASM), One Euro smoothing, the garment mesh warp and
+background removal all run client-side in `frontend/`. Your camera video never leaves your device. No server is needed.
+
+Deploy: `cd frontend && npm install && npm run build`, then publish `frontend/dist` (this repo uses the `gh-pages` branch).
+
+The Python/FastAPI version in `backend/` is the original server-side implementation and is kept for reference/local use.
 
 # AR Wardrobe — T-shirt-focused build
 
