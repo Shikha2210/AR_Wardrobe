@@ -1,0 +1,26 @@
+PHASE 25 - STABLE TORSO AND SHOULDER BOUNDARY REFINEMENT
+Built from the user's Phase 23 project, deliberately excluding the Phase 24
+dark-pixel sleeve repaint heuristic that produced isolated blue sleeve patches.
+
+Changes:
+- Restored Phase 23's complete T-shirt mesh/compositing pipeline.
+- Slightly extended only the top shoulder/sleeve width profile
+  [2.28, 2.48, 2.34, 1.82, 1.48, 1.62, 1.62], leaving chest/waist profile
+  and hem unchanged.
+- Moved arm foreground restoration start from 42% to 48% of the
+  shoulder-to-elbow segment and narrowed its stroke from 6.5% to 5.5% of
+  shoulder width. This allows the garment to cover more of the upper sleeve
+  while retaining the lower upper-arm/forearm foreground.
+- Kept person segmentation and all Phase 23 mesh, neckline, torso, waist,
+  and hem logic.
+- Slightly softened alpha edge feathering from sigma 0.65 to 0.75.
+- Explicitly did not include Phase 24 dark-pixel repaint helper.
+
+Validation:
+- Backend unit tests, syntax and ZIP integrity checked.
+- Webcam appearance and FPS must be verified on the user's computer.
+
+Tradeoff:
+The garment may overlap a little farther onto the upper arm. Test relaxed arms
+and arms extended sideways. This is a conservative geometric adjustment, not
+semantic clothing parsing.

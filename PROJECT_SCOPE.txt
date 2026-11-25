@@ -1,0 +1,1 @@
+This build intentionally focuses on T-SHIRTS ONLY. Halter dress UI, API endpoints, renderer and test have been removed. Existing local webcam tracking, automatic local extraction, CORS and custom T-shirt upload are retained.\n

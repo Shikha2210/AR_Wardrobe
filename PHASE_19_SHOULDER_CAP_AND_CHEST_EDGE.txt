@@ -1,0 +1,28 @@
+PHASE 19 - SHOULDER CAP COVERAGE AND CHEST EDGE CLEANUP
+Built from the user's uploaded Phase 18 ZIP and latest webcam screenshot.
+
+Observed:
+- Dark fabric remains between the neck/shoulder slope and blue shoulder cap.
+- The upper chest/underarm silhouette has outward protrusions while the user
+  holds both arms outward.
+
+Changes:
+- Added explicit shoulder-cap control points derived from left/right shoulder
+  landmarks and the shoulder-to-hip axis. The cap points extend outward and
+  slightly upward to fill the dark shoulder wedges.
+- Kept the centre neckline anchor unchanged.
+- Changed the width profile to keep broad shoulders but narrow the chest edge:
+  [2.06, 2.34, 2.26, 1.96, 1.62, 1.68, 1.66].
+- Preserved waist coverage and shortened hem from Phase 18.
+- Kept arm foreground restoration and pose tracking unchanged.
+
+Validation:
+- Backend unit tests: 10/10 passed.
+- Python syntax and ZIP integrity checked.
+- Webcam output and FPS have not been verified on the user's computer.
+
+Caution:
+- The new shoulder-cap and chest-edge changes are a geometric estimate from
+  pose landmarks. Check in a front-facing relaxed-arm pose first, then test
+  arms outward. A 2D mesh cannot guarantee full occlusion-free clothing
+  replacement for all poses.

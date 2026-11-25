@@ -1,0 +1,20 @@
+PHASE 4 - SLEEVE COVERAGE + FPS CORRECTION
+
+Changes:
+- Restored the 5x5 mesh in both backend/tryon.py and backend/app.py.
+  Phase 3's 9x9 mesh increased per-frame warping cost and the user's FPS
+  dropped from around 13 to 7.
+- Increased the top garment width profile so the shirt extends farther
+  beyond the shoulder anchors and covers more of the original shirt sleeves.
+- Kept the row-dependent torso expansion from Phase 3.
+- Updated the lightweight-grid unit test.
+
+Validation:
+- Backend tests: 5/5 passed.
+
+Important limitations:
+- This remains a 2D overlay, not true clothing segmentation or photorealistic
+  cloth simulation.
+- Pose landmarks cannot distinguish a black T-shirt from the wearer's arms.
+- The sleeve width change is a targeted geometric correction; webcam FPS and
+  actual sleeve coverage must be verified on the user's computer.

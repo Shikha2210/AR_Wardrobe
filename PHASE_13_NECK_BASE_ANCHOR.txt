@@ -1,0 +1,33 @@
+PHASE 13 - NECK BASE ANCHOR (BUILT FROM THE USER'S UPLOADED PHASE 12 ZIP)
+
+What inspection found:
+- Phase 12 still positioned the collar row by subtracting a fixed percentage
+  from a row interpolated between the shoulder midpoint and hip midpoint.
+- That does not identify the neck base, so the collar can remain on the upper
+  chest even when the percentage is increased.
+- The bundled PNG already has a transparent centre opening; alpha at the
+  opening centre is 0 and the shirt body below it is opaque. Therefore the
+  main remaining issue in this uploaded build is placement, not a missing
+  transparent opening.
+
+Change:
+- Replaced the percentage-only centre lift with explicit left, centre and
+  right collar anchors derived from shoulder midpoint, shoulder width and
+  torso axis.
+- Estimated neck base is placed above the shoulder midpoint.
+- The centre collar point sits slightly lower than the two side points to
+  produce a shallow crew-neck U curve.
+- Blended the anchor corrections into the next mesh row to reduce kinks.
+- Kept the existing 7x7 mesh, asset and websocket pipeline.
+
+Validation:
+- Backend unit tests: 7/7 passed.
+- Python compilation of app.py, tracking.py and tryon.py passed.
+- ZIP integrity checked.
+- Webcam visual result and FPS have NOT been verified on the user's computer.
+
+Limitations:
+- Neck base is estimated from pose geometry because MediaPipe Pose does not
+  provide a dedicated neck-base landmark.
+- This is still a 2D overlay, not photorealistic cloth simulation or full
+  semantic replacement of the original shirt.

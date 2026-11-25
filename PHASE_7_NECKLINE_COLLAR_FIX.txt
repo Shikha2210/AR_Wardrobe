@@ -1,0 +1,20 @@
+PHASE 7 - NECKLINE / ORIGINAL COLLAR CORRECTION
+
+Changes:
+- Increased the center-only neckline lift to 13.5% of torso height while
+  keeping the outer shoulder corners fixed.
+- Added a small neck-centered inpaint mask only where the warped garment has
+  transparent pixels in the collar opening. This is intended to suppress the
+  original dark shirt collar showing through the transparent opening.
+- Keeps the existing 5x5 mesh and sleeve geometry.
+- No new model downloads or package installations required.
+
+Validation:
+- Backend tests: 6/6 passed.
+- ZIP archive integrity checked.
+
+Important:
+- This is a targeted 2D neckline workaround, not semantic clothing segmentation.
+- It may soften pixels inside the collar opening; inspect the webcam result.
+- It does not remove all visible black fabric around the sleeves and sides.
+- Actual FPS and neckline appearance must be verified on the user's laptop.

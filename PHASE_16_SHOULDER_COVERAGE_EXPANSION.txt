@@ -1,0 +1,27 @@
+PHASE 16 - SHOULDER COVERAGE EXPANSION
+Built from the user's uploaded Phase 15 ZIP and current webcam screenshot.
+
+Observed:
+- Blue shirt placement is improved, but dark original shirt remains visible
+  across the upper shoulder caps.
+- The arms should remain visible in front; only the shoulder/sleeve fabric
+  region is being expanded.
+
+Changes:
+- Increased the upper garment width profile from [1.50,1.68,1.76,1.72,...]
+  to [1.78,1.96,1.92,1.82,...], tapering back toward the existing torso/hem.
+- Added outward shoulder-cap control adjustments on mesh rows 1 and 2.
+- Kept the central collar anchor unchanged.
+- Kept the shoulder seam row 3 and row 4 sleeve transition, torso width,
+  alpha compositing and arm foreground restoration.
+- Updated backend version to 1.15.0.
+
+Validation:
+- Backend unit tests: 8/8 passed.
+- ZIP integrity checked.
+- Real webcam coverage and FPS are not verified on the user's computer.
+
+Important:
+- This is a wider 2D garment overlay. It can cover more of the dark shirt in
+  a front-facing pose, but complete replacement of every visible original
+  fabric pixel requires person/clothing segmentation and occlusion handling.

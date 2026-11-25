@@ -1,0 +1,18 @@
+PHASE 5 - SLEEVE GEOMETRY CORRECTION
+
+Changes:
+- Removed the elbow-driven outer sleeve vertex pull. It was deforming the
+  sleeve into sharp triangular tips when elbows moved inward.
+- Replaced the aggressive upper-width profile with a more moderate sleeve
+  profile while retaining the Phase 3 torso-source widening.
+- Added a very small 3x3 alpha edge feather to reduce jagged warp edges.
+- Kept the 5x5 mesh for lower rendering cost.
+
+Validation:
+- Backend unit tests: 5/5 passed.
+
+Important limitations:
+- This phase improves the 2D garment warp only.
+- It does not yet segment the user's existing shirt from skin/arms.
+- It does not create realistic cloth folds or 3D cloth simulation.
+- Webcam appearance and FPS still require confirmation on the user's device.

@@ -1,0 +1,20 @@
+PHASE 10 - NECKLINE CURVE FIX
+
+Screenshot-driven correction:
+- The previous Phase 9 adjustment moved the centre neckline upward, producing
+  a sharp/jagged V and distorting the printed collar curve.
+- The new mesh dedicates a source control row to the actual centre notch in
+  the T-shirt asset (around source y=108px).
+- The centre neckline now moves DOWN along the torso axis by 6.5% of torso
+  height, tapering smoothly toward the outer columns; the next row moves 2.5%.
+- Shoulder-side controls remain fixed, so the collar curves down between them.
+- Retains the 7x7 non-uniform mesh and all existing tracking/rendering code.
+
+Validation:
+- Backend unit tests: 6/6 passed.
+- ZIP integrity checked.
+- Webcam appearance and real-device FPS still require user validation.
+
+Limitations:
+- This improves neckline geometry only. It does not remove all original black
+  fabric at sleeves/sides or provide photorealistic cloth simulation.

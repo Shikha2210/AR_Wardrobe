@@ -1,0 +1,30 @@
+PHASE 27 - REAL GARMENT ALIGNMENT
+Built from the user's accepted Phase 26 alignment baseline.
+
+Core requirement:
+Keep Phase 26 live body alignment (shoulders, neckline, torso, arm foreground
+restoration and person-mask clipping), but apply it to real uploaded T-shirt
+images without reshaping the garment into the bundled blue illustration.
+
+Changes:
+- Added a preserve_proportions flag to the garment warp.
+- The bundled demo illustration retains its existing narrow-torso correction.
+- Uploaded custom_upload garments bypass that demo-only torso widening, keeping
+  the real T-shirt's own body width, sleeve shape, neckline details, print,
+  colour and fabric pixels.
+- The same pose-driven mesh and Phase 26 body anchors are used for the real
+  garment.
+- Existing local garment extraction API and preview are retained.
+- Updated upload guidance: use a fully visible front-facing flat-lay/hanger
+  photo on a plain contrasting background for best extraction.
+- Model-photo extraction remains available but is approximate.
+
+Validation:
+- Backend tests, Python syntax and ZIP integrity checked.
+- No live webcam run was possible here; verify with a real garment photo.
+
+Known limitation:
+Extraction still uses local OpenCV GrabCut, not semantic clothing segmentation.
+It can struggle with backgrounds similar to the garment, shadows, folds,
+hanger/skin occlusion or model photos. The app displays an extracted preview
+so the user can inspect it before fitting.

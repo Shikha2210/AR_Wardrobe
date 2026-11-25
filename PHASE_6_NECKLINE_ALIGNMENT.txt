@@ -1,0 +1,21 @@
+PHASE 6 - NECKLINE ALIGNMENT
+
+This is a focused alignment pass. It does not claim to complete clothing replacement.
+
+Changes:
+- Added a neckline-specific mesh adjustment.
+- Raises the center of the upper neckline by 7.5% of torso height.
+- Blends the adjustment into the next mesh row.
+- Leaves the outer shoulder-corner mesh anchors unchanged.
+- Retains the 5x5 mesh and Phase 5 sleeve geometry.
+
+Validation:
+- Backend unit tests: 6/6 passed, including a new test confirming the center
+  neckline point moves upward while outer shoulder corners remain fixed.
+
+Not yet addressed:
+- Segmentation/removal of the original black T-shirt.
+- Photorealistic fabric or 3D cloth simulation.
+- End-to-end FPS on the user's laptop.
+
+Webcam validation is required before accepting this alignment change.

@@ -1,0 +1,28 @@
+PHASE 18 - BODY COVERAGE AND T-SHIRT LENGTH
+Built from the user's uploaded Phase 17 ZIP and the latest webcam screenshot.
+
+Observed:
+- Original dark shirt remains visible outside the blue shoulder/sleeve silhouette.
+- The blue overlay is too narrow through both waist sides.
+- The lower edge extends too far down for the requested T-shirt length.
+
+Changes in backend/tryon.py:
+- Increased the source torso expansion from 1.48x to 1.78x, beginning slightly
+  higher under the sleeve/underarm transition.
+- Increased shoulder/sleeve and waist width profile while retaining a gentle
+  taper: [2.00, 2.28, 2.22, 2.02, 1.82, 1.72, 1.68].
+- Shortened the hem extension from 0.14 to 0.035 torso heights below the hip
+  anchor.
+- Reduced the small inward waist pinch.
+- Kept the neckline, shoulder anchors, tracking, and arm foreground restoration.
+
+Validation:
+- Backend unit tests: 10/10 passed.
+- Python compilation and ZIP integrity checked.
+- Webcam appearance and performance are not verified on the user's machine.
+
+Caution:
+- Wider coverage can cover more of the original dark shirt, but it may overlap
+  arms when arms are held outward. The arm restoration mask is retained.
+- The correct final width/hem still needs confirmation from the next webcam
+  screenshot; this remains a 2D pose-driven overlay rather than 3D cloth.

@@ -1,0 +1,21 @@
+PHASE 3 - TORSO WIDTH / MESH CORRECTION
+
+Changes:
+- TryOnEngine now defaults to a 9x9 fitting grid.
+- backend/app.py explicitly instantiates a 9x9 grid (the previous app setting
+  overrode the renderer default).
+- Added row-dependent horizontal expansion to the supplied narrow vector T-shirt
+  asset: sleeve/shoulder rows are preserved while the lower torso is widened.
+- Increased the torso width profile to reduce the narrow blue panel appearance.
+- Updated the lightweight-grid test for the new 9x9 configuration.
+
+Validation:
+- Backend unit tests: 5/5 passed.
+- Asset alpha-bound measurement at 60% image height: 211 px before, 314 px
+  after source torso widening (about 49% wider).
+
+Limitations:
+- This is still a 2D transparent-overlay system, not photorealistic cloth simulation.
+- It does not yet perform semantic T-shirt segmentation. The original shirt may
+  remain visible where the overlay mask does not cover it.
+- Webcam FPS and visual fit must be checked on the user's machine.

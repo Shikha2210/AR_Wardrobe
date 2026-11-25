@@ -1,0 +1,27 @@
+PHASE 21 - MEDIAPIPE PERSON SEGMENTATION MASK
+Built from Phase 20. The user asked to add segmentation to improve live T-shirt replacement.
+
+Implemented:
+- Enabled MediaPipe Pose's built-in person segmentation output in the existing
+  single pose inference pass (enable_segmentation=True).
+- Passed result.segmentation_mask into TryOnEngine.render.
+- Multiplied the warped garment alpha by the soft person mask, clipping garment
+  pixels to the detected person silhouette and reducing spill onto background.
+- Kept pose landmarks, shoulder/chest mesh corrections, neckline, arm
+  foreground restoration, and the T-shirt asset.
+- Added a unit test verifying the person mask clips the rendered overlay.
+- Updated /api/health pipeline description and API version to 1.20.0.
+
+Validation:
+- Backend unit tests: 11/11 passed.
+- Python syntax and ZIP integrity checked.
+- Actual webcam output and FPS are not verified on the user's PC.
+
+Important distinction:
+MediaPipe Pose segmentation is PERSON segmentation, not CLOTHING/PARSING
+segmentation. It identifies person versus background. It does not label the
+black T-shirt separately from skin or arms, so it cannot by itself guarantee
+that every original black-shirt pixel is replaced. True clothing segmentation
+requires a clothing-parsing model with compatible pretrained weights; no such
+model/weights were present in the supplied project. Do not describe this phase
+as full black-shirt removal.

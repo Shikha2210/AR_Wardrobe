@@ -1,0 +1,30 @@
+PHASE 15 - SHOULDER AND SLEEVE COVERAGE
+Built from the user's newly uploaded Phase 14 project ZIP and latest webcam screenshot.
+
+Screenshot findings:
+- The neck/collar position is improved and should be preserved.
+- Blue garment remains too narrow over the shoulder caps, exposing the original
+  dark shirt across both shoulders.
+- Phase 14's shoulder helper pinned row 2, which is the collar control row,
+  rather than the shoulder-seam row.
+
+Changes:
+- Moved shoulder-seam anchoring to mesh row 3, which corresponds to the source
+  garment's shoulder seam below the collar.
+- Added a small outward allowance beyond the anatomical shoulder joints.
+- Added a continuation into row 4 to carry the sleeve line down smoothly.
+- Broadened only the upper shoulder/sleeve width profile (1.50, 1.68, 1.76,
+  1.72, 1.52) while leaving the waist/hem profile essentially unchanged.
+- Kept the Phase 14 non-uniform source/destination column mapping and neckline
+  anchors unchanged.
+
+Validation:
+- Backend unit tests: 8/8 passed.
+- Python syntax compilation passed.
+- ZIP integrity checked.
+- Webcam appearance and FPS are not verified on the user's laptop.
+
+Limitations:
+- This is a 2D overlay. Pose landmarks estimate shoulder joints but do not
+  provide exact garment seams or person segmentation. Large arm movements,
+  occlusion and body rotation can still reveal original clothing.

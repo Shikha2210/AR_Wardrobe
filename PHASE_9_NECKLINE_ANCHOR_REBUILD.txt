@@ -1,0 +1,23 @@
+PHASE 9 - NECKLINE ANCHOR REBUILD
+
+Why this changes the method:
+- The previous 5x5 mesh sampled the 760px garment image at uniform vertical
+  intervals. It had no control point near the collar cut-out (roughly y=145px),
+  so lifting the top mesh row did not correctly move the neckline.
+- This build uses a 7x7 mesh with non-uniform source rows around the collar and
+  non-uniform columns around the collar boundaries.
+- The collar row is now independently pulled toward a neck-base anchor derived
+  from the shoulder midpoint and torso vertical axis; adjacent controls move
+  less to create a rounded transition.
+- Retains the narrow transparent-neck-opening cleanup from Phase 7.
+- Backend app explicitly instantiates the 7x7 mesh.
+
+Validation:
+- Backend unit tests: 6/6 passed.
+- ZIP integrity checked.
+- This does not guarantee a specific webcam appearance or FPS on the user's PC.
+
+Limitations:
+- This is still a 2D pose-driven overlay, not full clothing segmentation.
+- The original black shirt may remain visible at sleeves and side edges.
+- A 7x7 mesh is heavier than 5x5; benchmark webcam FPS after installation.

@@ -1,0 +1,14 @@
+PHASE 12 - RAISED NECKLINE
+
+Screenshot-driven adjustment:
+- The previous collar opening was positioned too low on the upper chest.
+- The transparent collar control row (mesh row 2) is now shifted upward by
+  12% of torso height at the center, tapering smoothly to the outer collar.
+- The next mesh row receives a smaller 4.5% upward shift to avoid a hard kink.
+- Shoulder-side controls remain fixed.
+- The transparent neck opening asset from Phase 11 is preserved.
+
+Validation:
+- Backend unit tests: 7/7 passed.
+- ZIP integrity checked.
+- Webcam alignment and actual device FPS still require verification.

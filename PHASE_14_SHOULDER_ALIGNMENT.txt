@@ -1,0 +1,35 @@
+PHASE 14 - SHOULDER ALIGNMENT
+Built from the user's uploaded Phase 13 project ZIP and the latest webcam screenshot.
+
+Screenshot observation:
+- The neck opening/collar placement is substantially improved.
+- The blue garment's upper shoulder seams sit inward from the person's actual
+  shoulder landmarks, leaving too much of the original dark shirt exposed.
+
+Code findings:
+- The 7-column source mesh is non-uniform, but destination horizontal control
+  coordinates were still generated from a uniform -1..1 sequence. This means
+  source and destination control columns did not correspond, pinching/misplacing
+  the shoulder and collar region.
+- The upper shoulder seam controls were not explicitly attached to landmarks 11
+  and 12.
+
+Changes:
+- Destination horizontal coordinates now derive from the same normalized
+  non-uniform source-column positions.
+- Added explicit left/right shoulder seam anchors at mesh row 2, columns 1 and 5,
+  pinned to MediaPipe landmarks 11 and 12.
+- Added a gentle downward continuation into the next mesh row.
+- Shoulder pins are applied after neckline smoothing so the collar adjustment
+  cannot pull them away from the tracked shoulders.
+- Neckline geometry, transparent T-shirt asset, camera pipeline, and tracking
+  remain unchanged.
+
+Validation:
+- Backend unit tests: 8/8 passed.
+- ZIP integrity checked.
+- Actual webcam appearance and FPS still need confirmation on the user's PC.
+
+Scope:
+- This phase targets upper shoulder placement only. It does not yet remove all
+  original dark fabric from the sleeves or guarantee photorealistic replacement.

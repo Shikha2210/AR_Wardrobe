@@ -1,0 +1,24 @@
+PHASE 11 - TRUE TRANSPARENT T-SHIRT NECK OPENING
+
+Root cause:
+- The previous T-shirt PNG had opaque blue pixels across the neck opening.
+- The dark U-shaped collar was only a drawn line on top of blue fabric.
+- Pose/mesh adjustments could not make the neck visible through an opaque asset.
+
+Changes:
+- Edited backend/assets/tshirt.png to create a true transparent opening between
+  the garment's upper neck seam and the inner crew-neck collar curve.
+- Preserved the dark collar outline and opaque fabric below it.
+- Added a regression test checking that the neck opening is transparent and
+  the shirt body remains opaque.
+- Kept the Phase 10 pose-driven mesh and tracking configuration unchanged.
+
+Validation:
+- Backend unit tests: 7/7 passed.
+- ZIP integrity checked.
+
+Important:
+- This corrects the garment asset's neck opening. It does not guarantee perfect
+  neck placement on every pose; webcam validation is still required.
+- It does not remove all visible original black shirt at sleeves/sides.
+- FPS remains subject to the user's hardware and 7x7 mesh cost.

@@ -1,0 +1,30 @@
+PHASE 17 - CONNECTED UNDERARM AND SHOULDER COVERAGE
+Built from the user's uploaded Phase 16 ZIP and latest webcam screenshot.
+
+Observed:
+- Blue torso and sleeve panels still leave dark original-shirt wedges visible
+  around the underarm/side transition.
+- The supplied transparent T-shirt PNG has concave transparent notches between
+  the sleeve underside and torso side. Those transparent pixels expose the
+  user's original black shirt in the live overlay.
+
+Changes:
+- Filled the left and right underarm notch regions in backend/assets/tshirt.png
+  with opaque fabric pixels, joining sleeve and torso into a more continuous
+  garment silhouette.
+- Slightly widened only the upper shoulder/sleeve mesh profile; neckline,
+  collar anchor, and lower torso profile are unchanged.
+- Added a regression test that checks pixels in both former transparent
+  underarm wedges are now opaque.
+- Kept pose tracking, mesh mapping, and arm foreground restoration unchanged.
+
+Validation:
+- Backend unit tests: 9/9 passed.
+- ZIP integrity checked.
+- Webcam output and FPS are not verified on the user's PC.
+
+Limitations:
+- This reduces visible black through the specific transparent underarm gaps.
+- Arm/hand preservation and all-pose full clothing replacement still require
+  person segmentation and better occlusion masks. A 2D overlay cannot guarantee
+  zero original-shirt pixels in every pose.

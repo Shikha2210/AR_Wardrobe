@@ -1,0 +1,36 @@
+PHASE 26 - SILHOUETTE AND EDGE REFINEMENT
+Built from the user's uploaded Phase 25 ZIP and reviewed against the supplied
+765x477 webcam screenshot.
+
+Screenshot observations:
+- Main torso replacement is now acceptable.
+- Underarm/sleeve junctions have pointed blue tabs caused by abrupt mesh
+  control-point changes.
+- Small dark strips remain around the shoulder/neck boundary, potentially
+  due to the person segmentation edge clipping the garment.
+
+Changes:
+- Removed the hard row-4 shoulder/underarm control-point override. Row 4 now
+  follows the continuous mesh interpolation instead of being forcibly pulled
+  inward, reducing the sharp underarm kink.
+- Slightly moderated the shoulder width profile around rows 1-4 while
+  preserving lower torso/waist/hem width.
+- Expanded the person segmentation mask by a very small, shoulder-width-scaled
+  dilation (clamped to 1-3 px) before clipping the garment alpha. The garment
+  alpha still constrains the painted area.
+- Softened the alpha edge slightly (Gaussian sigma 0.9).
+- Kept Phase 25 arm restoration and explicitly did not reintroduce Phase 24's
+  dark-pixel sleeve repaint.
+- Preserved neckline, torso length and waist geometry.
+
+Validation:
+- Backend unit tests: 13/13 passed.
+- Python syntax and ZIP integrity checked.
+- Webcam appearance and FPS are not verified on the user's PC.
+
+Next phase:
+- Move to real garment try-on: upload a real front-facing T-shirt photo,
+  remove its background/derive alpha, normalize its garment mask, then fit the
+  garment to the same shoulder/torso mesh. Current local extraction is
+  classical CV and will need careful quality checks; it is not semantic
+  clothing segmentation.

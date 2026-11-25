@@ -1,0 +1,30 @@
+PHASE 22 - SHOULDER SLEEVE RESTORE FIX
+Built from Phase 21 and the latest annotated webcam screenshot.
+
+Diagnosis:
+The arm foreground restoration mask started at each shoulder landmark and
+used a thick line (17% of shoulder width). This restored original camera
+pixels over the shoulder cap, bringing the user's dark T-shirt sleeve back
+on top of the blue virtual shirt. This explains the persistent dark patches
+circled by the user; simply widening the garment mesh could not fix them.
+
+Changes:
+- Extracted arm foreground mask generation into _arm_foreground_mask().
+- Start restoration at 22% of the shoulder-to-elbow segment instead of at the
+  shoulder landmark.
+- Narrow upper-arm restoration stroke from 17% to 10.5% of shoulder width.
+- Narrow forearm restoration stroke from 11.5% to 7.5%.
+- Keep the lower arm/skin in front while allowing the virtual T-shirt to cover
+  the shoulder/sleeve cap.
+- Preserved person segmentation, shoulder/chest mesh, neckline, waist and hem.
+
+Validation:
+- Backend unit tests: 12/12 passed.
+- Python syntax and ZIP integrity checked.
+- Live webcam output and FPS are not yet verified on the user's computer.
+
+Expected tradeoff:
+The virtual tee should cover more of the original dark sleeve at the shoulder.
+Because the arm mask is narrower, unusual arm poses may show a small amount of
+garment overlap onto the upper arm; inspect front-facing, arms-relaxed and
+arms-out poses.

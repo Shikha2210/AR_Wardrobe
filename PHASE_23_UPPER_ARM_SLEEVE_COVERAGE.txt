@@ -1,0 +1,24 @@
+PHASE 23 - UPPER-ARM SLEEVE COVERAGE
+Applied directly to the Phase 22 ZIP supplied by the user.
+
+Observed issue:
+Dark original T-shirt sleeve pixels remain in the two highlighted upper-arm
+areas. Phase 22 arm restoration still began at 22% of the shoulder-to-elbow
+segment and used a 10.5%-of-shoulder-width stroke.
+
+Changes:
+- Moved arm foreground restoration start to 42% of the shoulder-to-elbow
+  segment, allowing the virtual tee to cover more of the original upper sleeve.
+- Narrowed upper-arm restoration stroke to 6.5% of shoulder width.
+- Narrowed forearm restoration stroke slightly to 7.0%.
+- Kept arm restoration so arms remain visible in front of the shirt.
+- Preserved person segmentation, neckline, shoulder mesh, waist and hem.
+
+Validation:
+- Backend unit tests are run against this exact archive.
+- Python syntax and ZIP integrity checked.
+- Live webcam result and FPS remain to be verified on the user's computer.
+
+Tradeoff:
+The blue garment may overlap slightly farther onto the upper arms in some
+poses. Test arms relaxed and extended sideways.

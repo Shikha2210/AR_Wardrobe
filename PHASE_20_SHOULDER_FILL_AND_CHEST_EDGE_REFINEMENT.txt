@@ -1,0 +1,30 @@
+PHASE 20 - SHOULDER FILL AND CHEST EDGE REFINEMENT
+Built from the user's Phase 19 ZIP and annotated webcam screenshot.
+
+User-marked findings:
+- Upper yellow-circled regions: dark original shirt remains between the collar
+  slope and the shoulder/sleeve overlay.
+- Lower pink-circled regions: blue garment protrudes outward at the armpit /
+  chest-side transition, creating extra flaps.
+
+Changes:
+- Extended the upper shoulder-cap mesh controls laterally to fill more of the
+  dark shoulder wedge while leaving the collar centre unchanged.
+- Moved row-4 armpit controls inward and reduced their downward continuation,
+  removing the outward side flap geometry.
+- Adjusted width profile to retain broad shoulder coverage but narrow the
+  chest/underarm transition:
+  [2.18, 2.38, 2.24, 1.82, 1.48, 1.62, 1.62].
+- Preserved neckline fitting, torso/waist coverage, shorter hem, tracking and
+  arm foreground restoration.
+
+Validation:
+- Backend unit tests: 10/10 passed.
+- Python syntax and ZIP integrity checked.
+- Actual webcam result and FPS remain unverified on the user's computer.
+
+Notes:
+- Pose landmarks are sparse joint points, not a segmentation mask of the
+  original garment. This phase improves geometric coverage and removes the
+  specific mesh flaps, but perfect per-pixel clothing replacement needs
+  person/clothing segmentation and occlusion handling.

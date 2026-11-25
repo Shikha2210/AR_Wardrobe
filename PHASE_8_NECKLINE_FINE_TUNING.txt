@@ -1,0 +1,15 @@
+PHASE 8 - NECKLINE FINE-TUNING
+
+Changes:
+- Increased center-only neckline lift from 7.5% to 10% of torso height.
+- Shoulder-corner anchors remain unchanged.
+- Updated the geometry unit test for the new center displacement.
+- Retained the Phase 7 neck-opening cleanup and 5x5 mesh.
+
+Validation:
+- Backend unit tests: 6/6 passed.
+- Webcam result and FPS are not verified on the user's machine.
+
+Scope:
+- This is a small neckline refinement only. It does not solve remaining sleeve,
+  side-coverage, fabric realism, or semantic clothing-removal issues.
