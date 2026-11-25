@@ -174,3 +174,10 @@ async def tryon_socket(ws: WebSocket):
     except Exception as exc:
         try: await ws.send_text(json.dumps({"type":"error","message":str(exc)}))
         except Exception: pass
+
+
+# Serve the built frontend (Docker/Hugging Face deployment). Must stay last.
+_DIST = Path(__file__).resolve().parent / "static"
+if _DIST.exists():
+    from fastapi.staticfiles import StaticFiles
+    app.mount("/", StaticFiles(directory=_DIST, html=True), name="frontend")
