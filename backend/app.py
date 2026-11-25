@@ -122,6 +122,11 @@ async def extract_garment_auto(image: UploadFile = File(...), mode: str = Form("
             "note": method_note + " Inspect the preview; AI masks can need correction on difficult photos."}
 
 
+@app.get("/api/wardrobe/demo-preview")
+def demo_preview():
+    return FileResponse(SAFE_DEMO_FILE, media_type="image/png")
+
+
 @app.get("/api/wardrobe/custom-preview")
 def custom_preview():
     if not CUSTOM_FILE.exists():
