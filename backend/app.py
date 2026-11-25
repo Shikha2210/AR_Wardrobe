@@ -18,7 +18,7 @@ app.add_middleware(
         "http://localhost:5173",
         "http://127.0.0.1:5173",
     ],
-    allow_origin_regex=os.environ.get("CORS_ORIGIN_REGEX", r"https://.*\.vercel\.app"),
+    allow_origin_regex=os.environ.get("CORS_ORIGIN_REGEX", r"https://(.*\.vercel\.app|shikha2210\.github\.io)"),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

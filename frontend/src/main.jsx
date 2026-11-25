@@ -3,7 +3,9 @@ import {createRoot} from 'react-dom/client';
 import {Camera, CameraOff, Shirt, RefreshCw, Activity, Wifi, WifiOff, Scan, Sparkles, CircleHelp, Check, AlertTriangle} from 'lucide-react';
 import './style.css';
 
-const API=(import.meta.env.VITE_API_URL||(import.meta.env.PROD?window.location.origin:'http://localhost:8000')).replace(/\/$/,'');
+const qApi=new URLSearchParams(window.location.search).get('api');
+if(qApi)localStorage.setItem('arw_api',qApi);
+const API=(qApi||localStorage.getItem('arw_api')||import.meta.env.VITE_API_URL||(import.meta.env.PROD&&!window.location.hostname.endsWith('github.io')?window.location.origin:'http://localhost:8000')).replace(/\/$/,'');
 const WS=API.replace(/^http/,'ws')+'/ws/tryon';
 const outfits=[{id:'white',name:'Cloud white',hex:'#e8e8e8'},{id:'black',name:'Midnight',hex:'#27272d'},{id:'blue',name:'Ocean blue',hex:'#306fc0'},{id:'red',name:'Cherry red',hex:'#c83f46'},{id:'green',name:'Sage green',hex:'#4f9254'},{id:'purple',name:'Violet',hex:'#99579b'}];
 
