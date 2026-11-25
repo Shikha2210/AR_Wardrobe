@@ -1,5 +1,5 @@
 """FastAPI service: camera frames in, 2D garment try-on frames out."""
-import json, time
+import json, os, time
 from pathlib import Path
 import cv2, mediapipe as mp, numpy as np
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException, UploadFile, File, Form
@@ -18,6 +18,7 @@ app.add_middleware(
         "http://localhost:5173",
         "http://127.0.0.1:5173",
     ],
+    allow_origin_regex=os.environ.get("CORS_ORIGIN_REGEX", r"https://.*\.vercel\.app"),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
